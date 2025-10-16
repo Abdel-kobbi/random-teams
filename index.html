@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random-teams</title>
+</head>
+
+<body class="bg-light">
+  <div id="app" class="container mt-3">
+    <h1 class="text-center">Generate random equipe</h1>
+    <form action="" class="w-50 m-auto mt-4" id="form">
+      <input type="text" id="name" placeholder="Alex" class="form-control" required>
+      <input type="submit" value="Ajouter" class="btn btn-primary d-block mt-4 w-75 mx-auto">
+    </form>
+    <button class="btn btn-warning" id="reset">Réinitialiser</button>
+    <button type="button" class="btn btn-info float-end m-3" data-bs-toggle="modal" data-bs-target="#modal">
+      Generate equipes
+    </button>
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4>Combien de personnes dans chaque équipe ?</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="number" placeholder="Combien de personnes dans chaque équipe" class="form-control"
+              id="numberOfTeam">
+            <small id="error" class="text-danger"></small>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary" id="generate">Generate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <table id="table" class="table table-hover w-75 mt-3 mx-auto text-center">
+      <thead>
+        <tr class="table-dark">
+          <th>#ID</th>
+          <th>Nom</th>
+          <th>Group</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3">Rien a afficher</td>
+        </tr>
+      </tbody>
+    </table>
+    <div id="caption"
+      style="width: 100px; height: 40px; background-color: lightgreen; font-weight: bold; display: none;">Leader team
+    </div>
+    <div class="row gap-1 mt-4 border-2" id="card-teams">
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
