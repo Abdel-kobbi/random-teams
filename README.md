@@ -27,7 +27,6 @@ This project automatically distributes participants into balanced and random gro
 1. **Clone the repository**
    ```bash
    git clone https://github.com/Abdel-kobbi/random-teams.git
-
 2. **Navigate to the project folder**
    ```bash
    cd random-group-generator

@@ -1,4 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "./style.css";
 import * as bootstrap from 'bootstrap';
 import { fillTable, generateTeams, fillCardTeams } from "./functions";
 
@@ -24,6 +25,11 @@ let names = [
 
 ];
 
+if (localStorage.getItem("names")) {
+  names = JSON.parse(localStorage.getItem("names"));
+  fillTable(names, table);
+}
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const name = inputName.value;
@@ -35,7 +41,8 @@ form.addEventListener("submit", (e) => {
   cardContainer.innerHTML = "";
 });
 
-generatebtn.addEventListener("click", () => {
+generatebtn.addEventListener("click", (e) => {
+  e.preventDefault()
   if (numberOfTeam.value == "") {
     error.innerHTML = "Enter le nombre de chaque equipe "
     return;
@@ -45,13 +52,13 @@ generatebtn.addEventListener("click", () => {
     modal.hide();
     return;
   }
+  localStorage.setItem("names", JSON.stringify(names));
   const randomTeams = generateTeams(names, +numberOfTeam.value, Math.floor(names.length / +numberOfTeam.value));
   modal.hide();
-  randomTeams.sort((a, b) => b.group - a.group);
+  randomTeams.sort((a, b) => a.group - b.group);
   fillTable(randomTeams, table);
   fillCardTeams(randomTeams, cardContainer, +numberOfTeam.value);
   caption.style.display = "block";
-
   numberOfTeam.value = "";
   error.innerHTML = "";
 })
@@ -64,4 +71,5 @@ rest.addEventListener("click", () => {
         </tr>`;
   caption.style.display = "none";
   cardContainer.innerHTML = "";
+  localStorage.removeItem("names");
 })

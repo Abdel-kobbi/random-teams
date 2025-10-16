@@ -4,7 +4,7 @@ export const fillTable = (data, table) => {
         rows += `
             <tr>
                 <td>${index + 1}</td>
-                <td>${name}</td>
+                <td class="text-capitalize">${name}</td>
                 <td>${group}</td>
             </tr>
         `;
@@ -41,12 +41,12 @@ export function fillCardTeams(teams, cardContainer, nbOfTeams) {
 
     filterdTeams.filter(team => team.length > 0).forEach((team) => {
 
-        cards += `<div class='col-3'>
-            <ul class="list-group">
+        cards += `<div class='col-3 scale my-2'>
+            <ul class="list-group shadow">
         `;
         team.forEach(({ name }, index) => {
             cards += `
-            <li class="list-group-item" ${index == 0 ? "style='background-color: lightgreen;'" : ""}>${name}</li>
+            <li class="list-group-item text-capitalize" ${index == 0 ? "style='background-color: lightgreen;'" : ""}>${name}</li>
             `;
         })
         cards += `
