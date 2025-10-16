@@ -41,3 +41,11 @@ This project automatically distributes participants into balanced and random gro
 Open in your browser
 Vite will show a local URL (usually http://localhost:5173).
 
+## 💡 Example of Use
+
+Enter the list of names, choose the number of groups, then click Generate to obtain a random distribution of participants.
+
+## 🤝 Contribution
+
+Contributions are welcome!
+Feel free to open an issue or submit a pull request to improve the project.
