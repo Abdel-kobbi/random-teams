@@ -16,7 +16,7 @@ This project automatically distributes participants into balanced and random gro
 
 ## 🛠️ Technologies Used
 - **HTML5** – Structure  
-- **Bootstrap** – Styling and layout  
+- **TailwindCSS** – Styling and layout  
 - **JavaScript (ES6)** – Logic and interactivity  
 - **Vite** – Development environment and bundler  
 
