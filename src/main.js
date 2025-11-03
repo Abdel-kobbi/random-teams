@@ -1,6 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import "./style.css";
-import * as bootstrap from 'bootstrap';
 import { fillTable, generateTeams, fillCardTeams } from "./functions";
 
 const form = document.getElementById("form");
@@ -8,8 +5,6 @@ const inputName = document.querySelector("#name");
 const table = document.querySelector("#table>tbody");
 const generatebtn = document.querySelector("#generate")
 const numberOfTeam = document.querySelector("#numberOfTeam");
-const modalEl = document.getElementById('modal');
-const modal = new bootstrap.Modal(modalEl);
 const error = document.getElementById("error");
 const rest = document.querySelector("#reset");
 
@@ -17,9 +12,31 @@ const cardContainer = document.querySelector("#card-teams")
 
 const caption = document.querySelector("#caption");
 
-modalEl.addEventListener('shown.bs.modal', () => {
-  numberOfTeam.focus()
-})
+// modal
+const modal = document.getElementById('modal');
+const openModal = document.getElementById('openModal');
+const closeModal = document.getElementById('closeModal');
+
+
+function showModal() {
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  numberOfTeam.focus();
+}
+
+function hideModal() {
+  modal.classList.remove('flex');
+  modal.classList.add('hidden');
+}
+
+openModal.addEventListener('click', showModal);
+closeModal.addEventListener('click', hideModal);
+
+// Fermeture si clic en dehors du modal
+window.addEventListener('click', (e) => {
+  if (e.target === modal) hideModal;
+});
+
 
 let names = [
 
@@ -49,12 +66,12 @@ generatebtn.addEventListener("click", (e) => {
   }
   if (names.length == 0) {
     alert("Entre les nom")
-    modal.hide();
+    hideModal();
     return;
   }
   localStorage.setItem("names", JSON.stringify(names));
   const randomTeams = generateTeams(names, +numberOfTeam.value, Math.floor(names.length / +numberOfTeam.value));
-  modal.hide();
+  hideModal();
   randomTeams.sort((a, b) => a.group - b.group);
   fillTable(randomTeams, table);
   fillCardTeams(randomTeams, cardContainer, +numberOfTeam.value);
